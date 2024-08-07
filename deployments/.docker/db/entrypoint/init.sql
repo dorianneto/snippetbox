@@ -38,6 +38,6 @@ INSERT INTO snippets (title, content, created, expires) VALUES (
     DATE_ADD(UTC_TIMESTAMP(), INTERVAL 7 DAY)
 );
 
-CREATE USER 'web'@'localhost';
-GRANT SELECT, INSERT, UPDATE, DELETE ON snippetbox.* TO 'web'@'localhost';
-ALTER USER 'web'@'localhost' IDENTIFIED BY 'secret2';
+CREATE USER 'web'@'%';
+GRANT SELECT, INSERT, UPDATE, DELETE ON snippetbox.* TO 'web'@'%';
+ALTER USER 'web'@'%' IDENTIFIED BY 'secret2';
