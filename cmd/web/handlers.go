@@ -18,15 +18,13 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 
 	render, err := template.ParseFiles(templateFiles...)
 	if err != nil {
-		app.logger.Error(err.Error())
-		http.Error(w, "Internal server error", http.StatusInternalServerError)
+		app.serverError(w, r, err)
 		return
 	}
 
 	err = render.ExecuteTemplate(w, "base", nil)
 	if err != nil {
-		app.logger.Error(err.Error())
-		http.Error(w, "Internal server error", http.StatusInternalServerError)
+		app.serverError(w, r, err)
 		return
 	}
 }
